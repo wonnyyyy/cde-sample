@@ -9,19 +9,14 @@ shared:
     beta.scredriver.cd/executor: k8s-vm
     screwdriver.cd/cpu: LOW
     screwdriver.cd/ram: LOW
-parameters:
-  region: "us-west-1"
-  az:
-    value: "zone 1"
-    description: "default AZ"
 
 jobs:
   main:
-    requires: [~pr, ~commit]
+    #requires: [~pr, ~commit]
     sourcePaths: ["src/main/", "screwdriver.yaml"]
     image: node:6
     steps:
-      - export: export GREETING="Hello, world!!"
+      - export: export GREETING="Hello, world!!!"
       - hello: echo $GREETING
       - init: npm install
       - test: npm test
